@@ -3,6 +3,8 @@ import {Switch, Route, Link} from 'react-router-dom';
 import {Layout, Typography, Space} from 'antd'
 import {Navbar} from './components';
 import './App.css'
+import { HomeFilled } from '@ant-design/icons/lib/icons';
+import Homepage from './components/pages/Homepage';
 
 const App = () => {
   // className will be for layout and minor styling changes
@@ -15,8 +17,12 @@ const App = () => {
       {/* Layout component from ant design  */}
       <Layout>
         <div className='routes'>
+          {/* Switch allows you to have multiple routes */}
           <Switch>
-
+              <Route exact path="/">
+                  {/* provide component want to render under the route */}
+                <Homepage />
+              </Route>  
           </Switch>
         </div>
       </Layout>
