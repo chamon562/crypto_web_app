@@ -1,7 +1,7 @@
 import React from 'react';
 import {Switch, Route, Link} from 'react-router-dom';
 import {Layout, Typography, Space} from 'antd'
-import {Navbar, Homepage} from './components';
+import {Navbar, Homepage, Cryptocurrencies, Exchanges, News} from './components';
 import './App.css'
 import { HomeFilled } from '@ant-design/icons/lib/icons';
 
@@ -21,6 +21,18 @@ const App = () => {
               <Route exact path="/">
                   {/* provide component want to render under the route */}
                 <Homepage />
+              </Route>  
+              <Route exact path="/cryptocurrencies">
+                  {/* provide component want to render under the route */}
+                <Cryptocurrencies />
+              </Route>  
+              <Route exact path="/exchanges">
+                  {/* provide component want to render under the route */}
+                <Exchanges />
+              </Route>  
+              <Route exact path="/news">
+                  {/* provide component want to render under the route */}
+                <News />
               </Route>  
           </Switch>
         </div>
