@@ -43,7 +43,10 @@ const App = () => {
       </Layout>
       </div>
       <div className='footer'>
-
+        <Typography.Title>
+          Cryptomatic <br/>
+          All rights reserved {new Date().getFullYear()}
+        </Typography.Title>
       </div>
       
   </div>;
