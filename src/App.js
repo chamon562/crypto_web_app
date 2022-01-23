@@ -1,10 +1,9 @@
 import React from 'react';
 import {Switch, Route, Link} from 'react-router-dom';
 import {Layout, Typography, Space} from 'antd'
-import {Navbar} from './components';
+import {Navbar, Homepage} from './components';
 import './App.css'
 import { HomeFilled } from '@ant-design/icons/lib/icons';
-import Homepage from './components/pages/Homepage';
 
 const App = () => {
   // className will be for layout and minor styling changes
