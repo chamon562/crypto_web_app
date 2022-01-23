@@ -8,6 +8,7 @@ import {
   FundOutlined,
   MenuOutlined,
 } from "@ant-design/icons/lib/icons";
+import icon from '../images/cryptomaticLogo.png'
 
 const Navbar = () => {
   return (

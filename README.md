@@ -30,6 +30,5 @@
 - npm install moment
     - parse times and dates
 - npm install react-router-dom
-
-
-    
+## Errors 1-22-2022
+1. could not see Navbar component when imported. Then realize had to import BrowserRoutter as Router from react-router-dom and wrap App component with Router.
