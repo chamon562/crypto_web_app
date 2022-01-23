@@ -12,7 +12,14 @@ const App = () => {
         <Navbar />
       </div>
       <div className='main'>
+      {/* Layout component from ant design  */}
+      <Layout>
+        <div className='routes'>
+          <Switch>
 
+          </Switch>
+        </div>
+      </Layout>
       </div>
       <div className='footer'>
 
