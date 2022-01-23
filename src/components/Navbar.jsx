@@ -18,6 +18,10 @@ const Navbar = () => {
             <Link to="/">
                 Crypotomatic
             </Link>
+            {/* button will be used to switch between the menus on mobile devices */}
+            {/* <Button className="menu-control-container">
+
+            </Button> */}
         </Typography.Title>
       </div>
     </div>
