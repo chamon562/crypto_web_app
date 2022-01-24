@@ -18,6 +18,10 @@ const Cryptocurrencies = ({simplified}) => {
 
   const [cryptos, setCryptos] = useState(cryptosList?.data.coins);
   console.log(cryptos);
+  // add if statement for isFetching to return a loading to give time for cryptocurrencies to load
+  if(isFetching) return 'Loading...'
+
+
   // loop over coins
   return (
     <>

@@ -16,6 +16,7 @@ const Homepage = () => {
   // hook to make api request
   // count turnary made in Cryptocurrenices.jsx and inside cryptoApi pass count as a paramter inside the
   // getCryptos query function, change createRequest(`/coins?limit=${count}`) endpoint to template string passing in count
+  // in useGetCryptosQuery(10) to limit to 10 
   const { data, isFetching } = useGetCryptosQuery(10);
   // making use of data
   // use globalStats object to represent stats
