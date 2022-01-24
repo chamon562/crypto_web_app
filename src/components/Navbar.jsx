@@ -16,7 +16,7 @@ const Navbar = () => {
       <div className="logo-container">
         <Avatar src={icon} size="large" />
         <Typography.Title level={2} className="logo">
-          <Link to="/">Crypotomatic</Link>
+          <Link to="/">Cryptomatic</Link>
           {/* button will be used to switch between the menus on mobile devices */}
           {/* <Button className="menu-control-container">
 
