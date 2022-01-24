@@ -40,8 +40,11 @@ export const cryptoApi = createApi({
     baseQuery: fetchBaseQuery({baseUrl}),
     endpoints: (builder) =>({
         // getCryptos query, and can export
+        // pass count as parameter change the coins endpoint to template string and 
+        // add the query to ?limit that the api provies and pass dollar sign count
+        // now will try to get a count of 10 if on Homepage.jsx
         getCryptos: builder.query({
-            query: ()=> createRequest('/coins')
+            query: (count)=> createRequest(`/coins?limit=${count}`)
         })
         // just need to keep adding different endpoints to keep 
         // making request

@@ -5,9 +5,15 @@ import { Card, Row, Col, Input } from "antd";
 
 import { useGetCryptosQuery } from "../../services/cryptoApi";
 
-const Cryptocurrencies = () => {
+const Cryptocurrencies = ({simplified}) => {
+  // specifing a count variable
+  // this is for if were in a simplified vew then show count 10 cards else 100
+  // if the value is not set for simplified by default its set to true
+  // then can pass count to useGetCryptosQuery
+  const count = simplified ? 10: 100;
+
   // rename data to cryptoList to later get coins pulled out from it.
-  const { data: cryptosList, isFetching } = useGetCryptosQuery();
+  const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
   // this state will give us access to the default state of coins
 
   const [cryptos, setCryptos] = useState(cryptosList?.data.coins);

@@ -14,7 +14,9 @@ const Homepage = () => {
   // in an object get the data and redux gives isFetching state
   // call this as a hook by equal to useGetCryptosQuery()
   // hook to make api request
-  const { data, isFetching } = useGetCryptosQuery();
+  // count turnary made in Cryptocurrenices.jsx and inside cryptoApi pass count as a paramter inside the
+  // getCryptos query function, change createRequest(`/coins?limit=${count}`) endpoint to template string passing in count
+  const { data, isFetching } = useGetCryptosQuery(10);
   // making use of data
   // use globalStats object to represent stats
   const globalStats = data?.data?.stats;
