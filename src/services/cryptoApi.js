@@ -32,15 +32,23 @@ const createRequest = (url) =>({url, headers: cryptoApiHeaders})
 // but keep in mind that if we want to make this request we also need to pass the headers.
 // so can create a simple utility function called createRequest that will add the url and the header
 // to the call. now in query instead of calling '/exchanges' can call createRequest('/exchanges') and
-// pass in the url which in this case is /exchanges
+// pass in the url which in this case is /exchanges.
+// change end point to '/coins' need info on coins.
+// now have cryptoApi that is being used in store
 export const cryptoApi = createApi({
     reducerPath: 'cryptoApi',
     baseQuery: fetchBaseQuery({baseUrl}),
     endpoints: (builder) =>({
+        // getCryptos query, and can export
         getCryptos: builder.query({
-            query: ()=> createRequest('/exchanges')
+            query: ()=> createRequest('/coins')
         })
     })
 })
-
-
+// exporting
+// redux toolkit creates a hook, that can be called instantly
+// to get all data from query, they also give loading state and finalizing state
+// and much more while making an api call.
+// GetCryptos has to be the same as the query getCryptos above and  use has to be infront
+// ending with Query
+export const {useGetCryptosQuery} = cryptoApi;

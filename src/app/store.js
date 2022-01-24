@@ -5,6 +5,9 @@ import {configureStore} from '@reduxjs/toolkit';
 // inside reducer add [cryptoApi.reduerPath]: cryptoApi.reducer,
 // redux will handle everything else, just have to specify that for
 // every single reducer thats created
+// have all the variables like reducerPath and reducer
+// application should be connected now. have to see which data to get first
+// then fetch from appropriate endpoint fromt he api
 import { cryptoApi } from '../services/cryptoApi';
 
 // first paramter is reducer equal to an empty object

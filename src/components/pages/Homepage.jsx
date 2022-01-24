@@ -5,7 +5,7 @@ import { Typography, Row, Col, Statistic } from "antd";
 import { Link } from "react-router-dom";
 
 const { Title } = Typography;
-
+// need data for Statistics
 const Homepage = () => {
   return (
     <>
