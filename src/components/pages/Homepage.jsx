@@ -54,12 +54,16 @@ const Homepage = () => {
         <Title level={2} className="home-title" >Top 10 Cryptocurrencies in the world</Title>
         <Title level={3} className="show-more" ><Link to="/cryptocurrencies">Show More</Link></Title>
       </div>
-      <Cryptocurrencies />
+      {/* on Homepage only want to show first 10 crypto currencies & first 10 news
+        passing in simplified props to Cryptocurrenceis and News component. the simplified
+        variable will later help with changing the amount shown to just 10 rather than hundreds
+      */}
+      <Cryptocurrencies simplified/>
       <div className="home-heading-container">
         <Title level={2} className="home-title" >Latest Crypto News</Title>
         <Title level={3} className="show-more" ><Link to="/news">Show More</Link></Title>
       </div>
-      <News />
+      <News simplified/>
     </>
   );
 };
