@@ -1,5 +1,5 @@
 // services folder is redux's new way of fetching data
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 // before set cryptoApi need to a store for redux application
 // a store is one central state of truth, meaning entire app state
@@ -11,7 +11,7 @@ const cryptoApiHeaders = {
   "x-rapidapi-key": process.env.REACT_APP_CRYPTO_API,
 };
 // base url to get coins
-const baseUrl = "https://coinranking1.p.rapidapi.com/coins"
+const baseUrl = "https://coinranking1.p.rapidapi.com"
 
 // utility function
 // createRequest accepts a url passed in the parameter and simply returns an object the url and headers equal to cryptoApiHeaders
@@ -43,6 +43,8 @@ export const cryptoApi = createApi({
         getCryptos: builder.query({
             query: ()=> createRequest('/coins')
         })
+        // just need to keep adding different endpoints to keep 
+        // making request
     })
 })
 // exporting
