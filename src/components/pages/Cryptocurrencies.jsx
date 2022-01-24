@@ -15,12 +15,23 @@ const Cryptocurrencies = ({simplified}) => {
   // rename data to cryptoList to later get coins pulled out from it.
   const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
   // this state will give us access to the default state of coins
-
-  const [cryptos, setCryptos] = useState(cryptosList?.data.coins);
+  // can turn this state into an empty array, because the useEffect that has the callbackfunction
+  // with the constant filteredData is going to run at the start
+  // const [cryptos, setCryptos] = useState(cryptosList?.data.coins);
+  const [cryptos, setCryptos] = useState([]);
   console.log(cryptos);
   // when changing searchTerm can add a useEffect
   const [searchTerm, setSearchTerm] = useState('')
   
+  // useEffect is a combination of componentDidMount happening at the start
+  // and also the componentDidUpdate with the 2 properties inside the dependancy array
+  useEffect(()=>{
+    // filter out only the search term and called the toLowerCase method to convert users input to lower case.
+    const filterdData = cryptosList?.data?.coins.filter((coin)=> coin.name.toLowerCase().includes(searchTerm.toLowerCase()))  
+    // cryptoList and searchTerm in dependancy array
+    // this will run everytime these values change
+    setCryptos(filterdData)
+  },[cryptosList,searchTerm])
   // add if statement for isFetching to return a loading to give time for cryptocurrencies to load
   if(isFetching) return 'Loading...'
 
