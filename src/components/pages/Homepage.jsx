@@ -3,10 +3,16 @@ import React from "react";
 import millify from "millify";
 import { Typography, Row, Col, Statistic } from "antd";
 import { Link } from "react-router-dom";
+// import useGetCryptosQuery
+import { useGetCryptosQuery } from "../../services/cryptoApi";
 
 const { Title } = Typography;
 // need data for Statistics
 const Homepage = () => {
+  // calling useGetCryptosQuery
+  // in an object get the data and redux gives isFetching state
+  // call this as a hook by equal to useGetCryptosQuery()
+  const { data, isFetching } = useGetCryptosQuery();
   return (
     <>
       <Title level={2} className="heading">
