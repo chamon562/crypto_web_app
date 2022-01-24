@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import millify from "millify";
 import { Link } from "react-router-dom";
 import { Card, Row, Col, Input } from "antd";
@@ -18,6 +18,9 @@ const Cryptocurrencies = ({simplified}) => {
 
   const [cryptos, setCryptos] = useState(cryptosList?.data.coins);
   console.log(cryptos);
+  // when changing searchTerm can add a useEffect
+  const [searchTerm, setSearchTerm] = useState('')
+  
   // add if statement for isFetching to return a loading to give time for cryptocurrencies to load
   if(isFetching) return 'Loading...'
 
@@ -25,6 +28,10 @@ const Cryptocurrencies = ({simplified}) => {
   // loop over coins
   return (
     <>
+    {/* input for users to search specific crypto */}
+    <div className="search-crypto">
+        <Input placeholder="Search Cryptocurrency" onChange={(e)=> setSearchTerm(e.target.value)} />
+    </div>
       <Row gutter={[32, 32]} className="crypto-card-container">
         {cryptos?.map((currency) => (
           //Col xs will be how wide this will be on screen
