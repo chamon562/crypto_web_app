@@ -26,7 +26,7 @@ const Cryptocurrencies = ({simplified}) => {
   return (
     <>
       <Row gutter={[32, 32]} className="crypto-card-container">
-        {cryptos.map((currency) => (
+        {cryptos?.map((currency) => (
           //Col xs will be how wide this will be on screen
           // so total width will be 24 out of 24 because mobile devices are not wide
           // enough for more on the same row. sm={12} will be 2 per row lg={6}
