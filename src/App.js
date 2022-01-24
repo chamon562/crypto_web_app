@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import { Layout, Typography, Space } from "antd";
+import axios from "axios";
 import {
   Navbar,
   Homepage,
@@ -13,6 +14,7 @@ import "./App.css";
 import { HomeFilled } from "@ant-design/icons/lib/icons";
 
 const App = () => {
+  
   // className will be for layout and minor styling changes
   // all main styling will be done specifically through ant design
   return (

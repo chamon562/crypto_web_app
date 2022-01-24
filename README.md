@@ -17,6 +17,11 @@
 - npm install @ant-design/icons 
     - for icons
 - npm install react-redux @reduxjs/toolkit 
+    - Taken from Redux site [reduxjs.org]. A predictable State Container for JS Apps. 
+    - Predictable: Redux helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test.
+    - Centralized: your application state and logic enables powerful capabilities like undo/redio state peristence and much more.
+    - Debuggable: The Redux Devtools make it easy to trace when , where, why and how your application's stte changed. Redux's architecture lets you log changes, use"time-travel debugging", and even send complete error reports to a server. 
+    - Flexible: Redux works with any UI layer, and has a large ecosystem of addons to fit your needs. 
 - npm install axios 
     - to fetch api data
 - npm install chart.js 

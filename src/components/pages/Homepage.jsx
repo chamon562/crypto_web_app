@@ -14,6 +14,7 @@ const Homepage = () => {
       </Title>
       <Row>
         {/* span={12} will take up 12 spaces or half the width of the screen, */}
+        {/* later to place info from api fetched */}
         <Col span={12}>
           <Statistic title="Total Cryptocurrencies" value="5" />
         </Col>
