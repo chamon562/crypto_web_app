@@ -4,13 +4,16 @@ import { Link } from "react-router-dom";
 import { Card, Row, Col, Input } from "antd";
 
 import { useGetCryptosQuery } from "../../services/cryptoApi";
-
-const Cryptocurrencies = ({simplified}) => {
+// TODO
+// how to show the search bar in the Cryptocurrencies component
+// and hid in the Homepage.jsx component
+const Cryptocurrencies = ({ simplified }) => {
   // specifing a count variable
   // this is for if were in a simplified vew then show count 10 cards else 100
   // if the value is not set for simplified by default its set to true
   // then can pass count to useGetCryptosQuery
-  const count = simplified ? 10: 100;
+  // having the simplified property can filter it
+  const count = simplified ? 10 : 100;
 
   // rename data to cryptoList to later get coins pulled out from it.
   const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
@@ -21,28 +24,39 @@ const Cryptocurrencies = ({simplified}) => {
   const [cryptos, setCryptos] = useState([]);
   console.log(cryptos);
   // when changing searchTerm can add a useEffect
-  const [searchTerm, setSearchTerm] = useState('')
-  
+  const [searchTerm, setSearchTerm] = useState("");
+
   // useEffect is a combination of componentDidMount happening at the start
   // and also the componentDidUpdate with the 2 properties inside the dependancy array
-  useEffect(()=>{
+  useEffect(() => {
     // filter out only the search term and called the toLowerCase method to convert users input to lower case.
-    const filterdData = cryptosList?.data?.coins.filter((coin)=> coin.name.toLowerCase().includes(searchTerm.toLowerCase()))  
+
+    const filterdData = cryptosList?.data?.coins.filter((coin) =>
+      coin.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
     // cryptoList and searchTerm in dependancy array
     // this will run everytime these values change
-    setCryptos(filterdData)
-  },[cryptosList,searchTerm])
+    setCryptos(filterdData);
+  }, [cryptosList, searchTerm]);
   // add if statement for isFetching to return a loading to give time for cryptocurrencies to load
-  if(isFetching) return 'Loading...'
-
+  if (isFetching) return "Loading...";
 
   // loop over coins
   return (
     <>
-    {/* input for users to search specific crypto */}
-    <div className="search-crypto">
-        <Input placeholder="Search Cryptocurrency" onChange={(e)=> setSearchTerm(e.target.value)} />
-    </div>
+      {/* input for users to search specific crypto */}
+      {/* logic for showing the search only in the Cryptocurrency component and not in the Homepage.jsx */}
+      {/* if no simplified then and only then render this , since simplified is true on the homepage,
+          but if its not simplified then its not a homepage
+        */}
+      {!simplified && (
+        <div className="search-crypto">
+          <Input
+            placeholder="Search Cryptocurrency"
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+      )}
       <Row gutter={[32, 32]} className="crypto-card-container">
         {cryptos?.map((currency) => (
           //Col xs will be how wide this will be on screen

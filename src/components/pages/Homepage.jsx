@@ -23,6 +23,7 @@ const Homepage = () => {
   const globalStats = data?.data?.stats;
   console.log(globalStats)
   console.log(data)
+  
   // how to fetch the data from data? at the start the data said undefined twice before a status of success
   // this why redux tool kit gives isFetching variable, so can check if(isFetching) is true then return a loading state
   if(isFetching){
