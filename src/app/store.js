@@ -9,10 +9,11 @@ import {configureStore} from '@reduxjs/toolkit';
 // application should be connected now. have to see which data to get first
 // then fetch from appropriate endpoint fromt he api
 import { cryptoApi } from '../services/cryptoApi';
-
+import { cryptoNewsApi } from '../services/cryptoNewsApi';
 // first paramter is reducer equal to an empty object
 export default configureStore({
     reducer: {
         [cryptoApi.reducerPath]: cryptoApi.reducer,
+        [cryptoNewsApi.reducerPath]: cryptoNewsApi.reducer,
     },
 })
