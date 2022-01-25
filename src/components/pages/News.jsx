@@ -55,6 +55,12 @@ const News = ({ simplified }) => {
                   alt="news"
                 />
               </div>
+              {/* render description if the length is longer than 100 characters then render a template 
+              string news.description.substring from 0 to 100... add dots to show that there could be more info
+              else if the description is less than 100 characters then render the news.description
+                
+              */}
+              <p>{news.description > 100 ? `${news.description.substring(0,100)}...`: news.description} </p>
             </a>
           </Card>
         </Col>
