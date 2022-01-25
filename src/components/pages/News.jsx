@@ -13,7 +13,8 @@ import { ConsoleSqlOutlined } from "@ant-design/icons/lib/icons";
 const { Text, Title } = Typography;
 // getting Option from Select
 const { Option } = Select;
-
+const demoImage =
+  "http://coinrevolution.com/wp-content/uploads/2020/06/cryptonews.jpg";
 // same as Cryptocurrencies, create a service
 // getting simplified field and simplified will be true if in the HomePage
 // so can do a turnary in the count. if simplified is true then count is 10 else its 100
@@ -22,9 +23,10 @@ const News = ({ simplified }) => {
   // will be equal to useGetCryptoNewsQuery and inisde put an object
   // and provide 2 parameters newsCategory, and the count
 
+  // Learned that I can put a turnary as a value for the count key in an object.
   const { data: cryptoNews } = useGetCryptoNewsQuery({
     newsCategory: "Cryptocurrency",
-    count: simplified ? 10 : 100,
+    count: simplified ? 6 : 12,
   });
   // logging cryptoNews to see if theres data
   console.log(cryptoNews);
@@ -35,24 +37,29 @@ const News = ({ simplified }) => {
   // looping through news data and mapping through cryptoNews
   // and getting one news article
   return (
-    
-      <Row gutter={[24, 24]}>
-        {cryptoNews.value.map((news, i) => (
-          // for each news show a column with Col
-          <Col xs={24} sm={12} lg={8} key={i}>
-            <Card hoverable className="news-card">
-              <a href={news.url} target="_blank" rel="noreferrer">
-                <div className="news-image-container">
-                  <Title className="news-title" level={4}>
-                    {news.name}
-                  </Title>
-                </div>
-              </a>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    
+    <Row gutter={[24, 24]}>
+      {cryptoNews.value.map((news, i) => (
+        // for each news show a column with Col
+        <Col xs={24} sm={12} lg={8} key={i}>
+          <Card hoverable className="news-card">
+            <a href={news.url} target="_blank" rel="noreferrer">
+              <div className="news-image-container">
+                <Title className="news-title" level={4}>
+                  {news.name}
+                </Title>
+                {/* adding image the reason for use of the ?. because some news is may not have the image
+                so also add an or use a demo image created 
+               */}
+                <img
+                  src={news?.image?.thumbnail?.contentUrl || demoImage}
+                  alt="news"
+                />
+              </div>
+            </a>
+          </Card>
+        </Col>
+      ))}
+    </Row>
   );
 };
 
