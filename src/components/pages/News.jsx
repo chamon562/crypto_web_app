@@ -35,7 +35,7 @@ const News = ({ simplified }) => {
   // looping through news data and mapping through cryptoNews
   // and getting one news article
   return (
-    <>
+    
       <Row gutter={[24, 24]}>
         {cryptoNews.value.map((news, i) => (
           // for each news show a column with Col
@@ -52,7 +52,7 @@ const News = ({ simplified }) => {
           </Col>
         ))}
       </Row>
-    </>
+    
   );
 };
 
