@@ -91,6 +91,14 @@
   color: #000;
   margin: 10px 0px !important;
 }
+.provider-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.provider-name{
+  margin-left: 10px;
+}
 
 .footer {
   background-color: #001529;
