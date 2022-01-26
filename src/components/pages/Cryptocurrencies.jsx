@@ -63,7 +63,7 @@ const Cryptocurrencies = ({ simplified }) => {
           // so total width will be 24 out of 24 because mobile devices are not wide
           // enough for more on the same row. sm={12} will be 2 per row lg={6}
           <Col xs={24} sm={12} lg={6} className="crypto-card" key={currency.id}>
-            <Link to={`/crypto/${currency.id}`}>
+            <Link key={currency.uuid} to={`/crypto/${currency.uuid}`}>
               <Card
                 title={`${currency.rank}. ${currency.name}`}
                 extra={<img className="crypto-image" src={currency.iconUrl} />}
