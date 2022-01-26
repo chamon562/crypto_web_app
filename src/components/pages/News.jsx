@@ -61,6 +61,13 @@ const News = ({ simplified }) => {
                 
               */}
               <p>{news.description > 100 ? `${news.description.substring(0,100)}...`: news.description} </p>
+              <div className="provier-container">
+                <div>
+                  <Avatar src={news.provider[0]?.image?.thumbnail?.contentUrl || demoImage} alt="news" />
+                    {/* add the timing of published with moment library */}
+                  <Text>{moment(news.dataPublished).startOf('ss').fromNow()}</Text>
+                </div>
+              </div>
             </a>
           </Card>
         </Col>
