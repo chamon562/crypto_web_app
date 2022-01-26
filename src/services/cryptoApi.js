@@ -45,6 +45,12 @@ export const cryptoApi = createApi({
         // now will try to get a count of 10 if on Homepage.jsx
         getCryptos: builder.query({
             query: (count)=> createRequest(`/coins?limit=${count}`)
+        }),
+        getCryptoDetails: builder.query({
+            // build the query
+            // as the paramter place coinId and return createRequest()
+            // now the end point is here so import in cryptoDetails
+            query: (coinId) => createRequest(`/coin/${coinId}`)
         })
         // just need to keep adding different endpoints to keep 
         // making request
@@ -56,4 +62,4 @@ export const cryptoApi = createApi({
 // and much more while making an api call.
 // GetCryptos has to be the same as the query getCryptos above and  use has to be infront
 // ending with Query
-export const {useGetCryptosQuery} = cryptoApi;
+export const {useGetCryptosQuery, useGetCryptoDetailsQuery} = cryptoApi;
