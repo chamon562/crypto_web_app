@@ -38,7 +38,7 @@ const CryptoDetails = () => {
   if (isFetching) return "Loading...";
   // create an array of time
   const time = ["3h", "24h", "7d", "30d", "1y", "3m", "5y"];
-  console.log(cryptoDetails["24hVolume"]);
+  console.log(cryptoDetails);
  
   const stats = [
     {
@@ -171,6 +171,22 @@ const CryptoDetails = () => {
           ))}
         </Col>
       </Col>
+        {/* show all the data for that specific crypto currency */}
+            <Col className="coin-desc-link">
+              <Row className="coin-desc" >
+                <Title
+                  level={3}
+                  className="coin-details-heading"
+                >
+                  What is {cryptoDetails.name} 
+                  {/* using HTMLReactParser, pass in cryptoDetails.description
+                    description is a raw HTML:
+                    description: "<p>Bitcoin is the firs
+                  */}
+                  {HTMLReactParser(cryptoDetails.description)}
+                </Title>
+              </Row>
+            </Col>
     </Col>
   );
 };
