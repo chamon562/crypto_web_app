@@ -1,7 +1,7 @@
 // later will need a chart to render time period so import useState
 import React, { useState } from "react";
 import HTMLReactParser from "html-react-parser";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Col, Typography, Row, Select } from "antd";
 import {
   MoneyCollectOutlined,
@@ -28,18 +28,18 @@ const CryptoDetails = () => {
   // at the start of timePeriod set to 7 days
   const [timePeriod, setTimePeriod] = useState("7d");
   // make sure to pass coinId into useGetCryptoDetailsQuery(cointId)
-  const volume = "24hVolume"
+  const volume = "24hVolume";
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
   // setting the details to a constant variable to pull data for that specific coin
   const cryptoDetails = data?.data?.coin;
   // fetch crypto details for that specific crypto with its coinId which is uuid
   // do in cryptoApi in service
-  
+
   if (isFetching) return "Loading...";
   // create an array of time
   const time = ["3h", "24h", "7d", "30d", "1y", "3m", "5y"];
   console.log(cryptoDetails);
- 
+
   const stats = [
     {
       title: "Price to USD",
@@ -49,7 +49,9 @@ const CryptoDetails = () => {
     { title: "Rank", value: cryptoDetails?.rank, icon: <NumberOutlined /> },
     {
       title: "24h Volume",
-      value: `$ ${cryptoDetails['24hVolume'] && millify(cryptoDetails['24hVolume'])}`,
+      value: `$ ${
+        cryptoDetails["24hVolume"] && millify(cryptoDetails["24hVolume"])
+      }`,
       icon: <ThunderboltOutlined />,
     },
     {
@@ -151,11 +153,11 @@ const CryptoDetails = () => {
             </Col>
           ))}
         </Col>
-          {/* along side bitcoin value stats want to show stats for all coins combined  */}
+        {/* along side bitcoin value stats want to show stats for all coins combined  */}
         <Col className="other-stats-info">
           <Col className="coin-value-statistics-heading">
             <Title level={3} className="coin-details-heading">
-               Other Statistics
+              Other Statistics
             </Title>
             <p>An overview showing the stats of all Crypto currencies </p>
           </Col>
@@ -171,22 +173,32 @@ const CryptoDetails = () => {
           ))}
         </Col>
       </Col>
-        {/* show all the data for that specific crypto currency */}
-            <Col className="coin-desc-link">
-              <Row className="coin-desc" >
-                <Title
-                  level={3}
-                  className="coin-details-heading"
-                >
-                  What is {cryptoDetails.name} 
-                  {/* using HTMLReactParser, pass in cryptoDetails.description
+      {/* show all the data for that specific crypto currency */}
+      <Col className="coin-desc-link">
+        <Row className="coin-desc">
+          <Title level={3} className="coin-details-heading">
+            What is {cryptoDetails.name}
+            {/* using HTMLReactParser, pass in cryptoDetails.description
                     description is a raw HTML:
                     description: "<p>Bitcoin is the firs
                   */}
-                  {HTMLReactParser(cryptoDetails.description)}
-                </Title>
-              </Row>
-            </Col>
+            {HTMLReactParser(cryptoDetails.description)}
+          </Title>
+        </Row>
+        {/* every coin has some related websites and links, render that data here*/}
+        <Col className="coin-links">
+          <Title level={3} className="coin-details-heading">
+            {cryptoDetails.name} Links
+          </Title>
+          {/* under title loop over the cryptoDetails link*/}
+          {cryptoDetails?.links.map((link) => (
+            <Row className="coin-link" key={link.name}>
+              <Title level={5} className="link-name" >{link.type}</Title>
+              <a href={link.url} target="_blank" rel="norefer">{link.name}</a>
+            </Row>
+          ))}
+        </Col>
+      </Col>
     </Col>
   );
 };
