@@ -171,7 +171,9 @@
   gap: 10px;
   font-size: 1rem;
 }
-
+.stats{
+  font-weight: 800;
+}
 .footer {
   background-color: #001529;
   display: flex;
