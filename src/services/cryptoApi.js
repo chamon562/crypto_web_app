@@ -51,6 +51,12 @@ export const cryptoApi = createApi({
             // as the paramter place coinId and return createRequest()
             // now the end point is here so import in cryptoDetails
             query: (coinId) => createRequest(`/coin/${coinId}`)
+        }),
+        getCryptoHistory: builder.query({
+            
+            // put an object taking in coinId, and timeperiod
+            // and need to create a request to the path needed which is `coin/${coinId}/history/${timeperiod}
+            query: ({coinId, timePeriod}) => createRequest(`coin/${coinId}/history?timePeriod=${timePeriod}`)
         })
         // just need to keep adding different endpoints to keep 
         // making request
@@ -62,4 +68,4 @@ export const cryptoApi = createApi({
 // and much more while making an api call.
 // GetCryptos has to be the same as the query getCryptos above and  use has to be infront
 // ending with Query
-export const {useGetCryptosQuery, useGetCryptoDetailsQuery} = cryptoApi;
+export const {useGetCryptosQuery, useGetCryptoDetailsQuery, useGetCryptoHistoryQuery} = cryptoApi;

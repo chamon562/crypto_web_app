@@ -14,8 +14,10 @@ import {
   NumberOutlined,
   ThunderboltOutlined,
 } from "@ant-design/icons";
-import { useGetCryptoDetailsQuery } from "../../services/cryptoApi";
+import { useGetCryptoDetailsQuery, useGetCryptoHistoryQuery } from "../../services/cryptoApi";
 import millify from "millify";
+import LineChart from "./LineChart";
+
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -25,13 +27,19 @@ const { Option } = Select;
 const CryptoDetails = () => {
   // useParams takes the id in the url and simply allows to be used as a variable
   const { coinId } = useParams();
+  console.log(coinId)
   // at the start of timePeriod set to 7 days
   const [timePeriod, setTimePeriod] = useState("7d");
+  
   // make sure to pass coinId into useGetCryptoDetailsQuery(cointId)
-  const volume = "24hVolume";
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
+  // rename data to be coinHistory
+  // make sure if called timePeriod camel case do the same in the cryptoAPi.js query paramters
+  const {data: coinHistory} = useGetCryptoHistoryQuery({coinId, timePeriod})
+  console.log(coinHistory)
   // setting the details to a constant variable to pull data for that specific coin
   const cryptoDetails = data?.data?.coin;
+  
   // fetch crypto details for that specific crypto with its coinId which is uuid
   // do in cryptoApi in service
 
@@ -39,7 +47,7 @@ const CryptoDetails = () => {
   // create an array of time
   const time = ["3h", "24h", "7d", "30d", "1y", "3m", "5y"];
   console.log(cryptoDetails);
-
+  console.log(timePeriod)
   const stats = [
     {
       title: "Price to USD",
@@ -132,7 +140,10 @@ const CryptoDetails = () => {
           <Option key={date}>{date}</Option>
         ))}
       </Select>
-      {/* render a line chart */}
+      {/* render a line chart coinHistory info will come from api call
+        dont forget to create endpoint in the services/cryptoAPi.js
+      */}
+      <LineChart coinHistory={coinHistory} currentPrice={millify(cryptoDetails.price)} coinName={cryptoDetails.name}/>
       {/* statistics */}
       <Col className="stats-container">
         <Col className="coin-value-statistics">
