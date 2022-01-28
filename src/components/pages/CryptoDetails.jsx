@@ -145,7 +145,7 @@ const CryptoDetails = () => {
       {/* render a line chart coinHistory info will come from api call
         dont forget to create endpoint in the services/cryptoAPi.js
       */}
-      <LineChart coinHistory={coinHistory} currentPrice={millify(cryptoDetails.price)} coinName={cryptoDetails.name}/>
+      <LineChart coinHistory={coinHistory} currentPrice={cryptoDetails.price > 0.1 ? millify(cryptoDetails.price): cryptoDetails.price} coinName={cryptoDetails.name}/>
       {/* statistics */}
       <Col className="stats-container">
         <Col className="coin-value-statistics">

@@ -16,10 +16,11 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
     // console.log(coinHistory?.data?.history[i].price);
     // pushing and populating the one by one into coinPrice array
     coinPrice.push(coinHistory?.data?.history[i].price);
+    console.log(coinPrice)
     // pushing and populating the one by one into timeStamp array
     // use new Date() to make more readible and covert to an actual date and use .toLocaleDateString()
     // to help with readiblity
-
+    
     // issue 1: had to downgrade react-chartjs-2 to: npm i react-chartjs-2@3.0.4 to see the chart
     // issue 2: the graph kept showing year 1970  with the timestamp data given from the coinranking api and see that
     // in the coinranking api timestamp and it returns the infromation in a epoch timestamp in seconds.
@@ -76,6 +77,9 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
         </Title>
         <Col className="price-container">
           {/* trying to add ternary for style color in title if percentage is negative */}
+          {/* article found to help https://stackoverflow.com/questions/41092677/ternary-operator-on-style-with-react-js-es-6 
+          What you provide to style attribute should be an object. Since we write js code in jsx between curly braces, you ll insert an object there
+        */}
           <Title
             style={
               coinHistory?.data?.change < 0
@@ -90,6 +94,7 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
           </Title>
           <Title level={5} className="current-price">
             Current: {coinName} Price: $ {currentPrice}
+            {console.log(currentPrice)}
           </Title>
         </Col>
       </Row>
