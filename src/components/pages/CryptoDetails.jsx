@@ -1,5 +1,5 @@
 // later will need a chart to render time period so import useState
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import HTMLReactParser from "html-react-parser";
 import { Link, useParams } from "react-router-dom";
 import { Col, Typography, Row, Select } from "antd";
@@ -36,7 +36,10 @@ const CryptoDetails = () => {
   // rename data to be coinHistory
   // make sure if called timePeriod camel case do the same in the cryptoAPi.js query paramters
   const {data: coinHistory} = useGetCryptoHistoryQuery({coinId, timePeriod})
-  console.log(coinHistory)
+
+    
+  console.log(coinHistory?.data?.history)
+  console.log({timePeriod})
   // setting the details to a constant variable to pull data for that specific coin
   const cryptoDetails = data?.data?.coin;
   
@@ -47,7 +50,6 @@ const CryptoDetails = () => {
   // create an array of time
   const time = ["3h", "24h", "7d", "30d", "1y", "3m", "5y"];
   console.log(cryptoDetails);
-  console.log(timePeriod)
   const stats = [
     {
       title: "Price to USD",

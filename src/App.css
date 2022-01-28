@@ -196,10 +196,30 @@
   font-size: 1rem;
 }
 /* changes backgroudn in the column to white on hoover */
-.coin-link:hover, .coin-stats:hover{
-  background-color: var(--bgSecondary)
+.coin-link:hover,
+.coin-stats:hover {
+  background-color: var(--bgSecondary);
+}
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  color: #0071bd;
 }
 
+.chart-title {
+  color: #0071bd !important ;
+}
+
+.price-container {
+  display: flex !important;
+  gap: 20px !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+}
+.price-change {
+  font-weight: 900 !important;
+}
 .footer {
   background-color: #001529;
   display: flex;

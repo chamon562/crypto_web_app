@@ -57,6 +57,7 @@ export const cryptoApi = createApi({
             // put an object taking in coinId, and timeperiod
             // and need to create a request to the path needed which is `coin/${coinId}/history/${timeperiod}
             query: ({coinId, timePeriod}) => createRequest(`coin/${coinId}/history?timePeriod=${timePeriod}`)
+            
         })
         // just need to keep adding different endpoints to keep 
         // making request
