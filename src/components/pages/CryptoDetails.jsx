@@ -33,6 +33,7 @@ const CryptoDetails = () => {
   
   // make sure to pass coinId into useGetCryptoDetailsQuery(cointId)
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
+  console.log(data?.data?.coin?.iconUrl)
   // rename data to be coinHistory
   // make sure if called timePeriod camel case do the same in the cryptoAPi.js query paramters
   const {data: coinHistory} = useGetCryptoHistoryQuery({coinId, timePeriod})
@@ -122,6 +123,8 @@ const CryptoDetails = () => {
     <Col className="coin-detail-container">
       <Col className="coin-heading-container">
         <Title level={2} className="coin-name">
+        <img className="crypto-image-Title" src={data?.data?.coin?.iconUrl} alt="coinIcon" />
+
           {/* slug is alternative name for that crypto currency */}
           {cryptoDetails.name}({cryptoDetails.symbol}) Price
         </Title>
@@ -190,7 +193,10 @@ const CryptoDetails = () => {
       <Col className="coin-desc-link">
         <Row className="coin-desc">
           <Title level={3} className="coin-details-heading">
-            What is {cryptoDetails.name}
+              {/* TODO ADD COIN ICON  */}
+
+            <span className="coin-details-span">What is</span>   
+            {cryptoDetails.name}
             {/* using HTMLReactParser, pass in cryptoDetails.description
                     description is a raw HTML:
                     description: "<p>Bitcoin is the firs

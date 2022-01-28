@@ -16,7 +16,7 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
     // console.log(coinHistory?.data?.history[i].price);
     // pushing and populating the one by one into coinPrice array
     coinPrice.push(coinHistory?.data?.history[i].price);
-    console.log(coinPrice)
+    // console.log(coinPrice)
     // pushing and populating the one by one into timeStamp array
     // use new Date() to make more readible and covert to an actual date and use .toLocaleDateString()
     // to help with readiblity
@@ -94,7 +94,7 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
           </Title>
           <Title level={5} className="current-price">
             Current: {coinName} Price: $ {currentPrice}
-            {console.log(currentPrice)}
+            {/* {console.log(currentPrice)} */}
           </Title>
         </Col>
       </Row>

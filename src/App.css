@@ -101,10 +101,18 @@
 .select-news {
   width: 180px;
 }
-
+.crypto-image-Title{
+  height: 50px;
+  margin: 20px;
+}
 .coin-detail-container {
   margin: 30px;
   /* background-color: green; */
+}
+
+.coin-details-span{
+  color: rgb(45, 194, 45);
+  margin-right: 5px;
 }
 .coin-heading-container {
   display: flex;
