@@ -203,7 +203,7 @@
 .chart-header {
   display: flex;
   justify-content: space-between;
-  gap: 50px;
+  
   color: #0071bd;
 }
 
@@ -215,10 +215,12 @@
   display: flex !important;
   gap: 20px !important;
   align-items: center !important;
-  flex-wrap: wrap !important;
 }
 .price-change {
-  font-weight: 900 !important;
+  margin: 0px !important;
+}
+.current-price{
+  margin: 0px !important;
 }
 .footer {
   background-color: #001529;

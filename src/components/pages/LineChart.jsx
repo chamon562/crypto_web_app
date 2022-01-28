@@ -51,7 +51,7 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
         data: coinPrice,
         fill: false,
         backgroundColor: "#0071bd",
-        borderColor: "#0071bd",
+        borderColor: "#6da4c8",
       },
     ],
   };
@@ -72,20 +72,26 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
     <>
       <Row className="chart-header">
         <Title level={2} className="chart-title">
-          {coinName}Price Chart
-          <Col className="price-container">
-            <Title level={5} className="price-change">
-              {/* {console.log(coinHistory)} */}
-              Change{" "}
-              {coinHistory?.data?.change
-                ? coinHistory?.data?.change + "%"
-                : "undefined"}
-            </Title>
-            <Title level={5} className="current-price">
-              Current {coinName} Price: $ {currentPrice}
-            </Title>
-          </Col>
+          {coinName} Price Chart
         </Title>
+        <Col className="price-container">
+          {/* trying to add ternary for style color in title if percentage is negative */}
+          <Title
+            style={
+              coinHistory?.data?.change < 0
+                ? { color: "red" }
+                : { color: "green" }
+            }
+            level={5}
+            className="price-change"
+          >
+            {/* {console.log(coinHistory)} */}
+            Change: {coinHistory?.data?.change}%
+          </Title>
+          <Title level={5} className="current-price">
+            Current: {coinName} Price: $ {currentPrice}
+          </Title>
+        </Col>
       </Row>
       <Line data={data} options={options} />
       {/* dont forget to create options 
