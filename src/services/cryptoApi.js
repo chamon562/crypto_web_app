@@ -46,6 +46,9 @@ export const cryptoApi = createApi({
         getCryptos: builder.query({
             query: (count)=> createRequest(`/coins?limit=${count}`)
         }),
+        getAllCryptos: builder.query({
+            query: ()=> createRequest(`/coins`)
+        }),
         getCryptoDetails: builder.query({
             // build the query
             // as the paramter place coinId and return createRequest()
@@ -58,7 +61,11 @@ export const cryptoApi = createApi({
             // and need to create a request to the path needed which is `coin/${coinId}/history/${timeperiod}
             query: ({coinId, timePeriod}) => createRequest(`coin/${coinId}/history?timePeriod=${timePeriod}`)
             
-        })
+        }),
+        // creating endpoint for exchanges
+        // getCryptoExchanges: builder.query({
+        //     query: () => createRequest(`/exchanges`)
+        // })
         // just need to keep adding different endpoints to keep 
         // making request
     })
@@ -69,4 +76,4 @@ export const cryptoApi = createApi({
 // and much more while making an api call.
 // GetCryptos has to be the same as the query getCryptos above and  use has to be infront
 // ending with Query
-export const {useGetCryptosQuery, useGetCryptoDetailsQuery, useGetCryptoHistoryQuery} = cryptoApi;
+export const {useGetAllCryptosQuery ,useGetCryptosQuery, useGetCryptoDetailsQuery, useGetCryptoHistoryQuery} = cryptoApi;

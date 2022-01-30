@@ -25,7 +25,6 @@ const Cryptocurrencies = ({ simplified }) => {
   console.log(cryptos);
   // when changing searchTerm can add a useEffect
   const [searchTerm, setSearchTerm] = useState("");
-
   // useEffect is a combination of componentDidMount happening at the start
   // and also the componentDidUpdate with the 2 properties inside the dependancy array
   useEffect(() => {

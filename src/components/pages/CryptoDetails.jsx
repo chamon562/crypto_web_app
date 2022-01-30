@@ -14,10 +14,12 @@ import {
   NumberOutlined,
   ThunderboltOutlined,
 } from "@ant-design/icons";
-import { useGetCryptoDetailsQuery, useGetCryptoHistoryQuery } from "../../services/cryptoApi";
+import {
+  useGetCryptoDetailsQuery,
+  useGetCryptoHistoryQuery,
+} from "../../services/cryptoApi";
 import millify from "millify";
 import LineChart from "./LineChart";
-
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -27,29 +29,31 @@ const { Option } = Select;
 const CryptoDetails = () => {
   // useParams takes the id in the url and simply allows to be used as a variable
   const { coinId } = useParams();
-  console.log(coinId)
+  console.log(coinId);
   // at the start of timePeriod set to 7 days
   const [timePeriod, setTimePeriod] = useState("7d");
-  
+
   // make sure to pass coinId into useGetCryptoDetailsQuery(cointId)
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
-  console.log(data?.data?.coin?.iconUrl)
+  console.log(data?.data?.coin?.iconUrl);
   // rename data to be coinHistory
   // make sure if called timePeriod camel case do the same in the cryptoAPi.js query paramters
-  const {data: coinHistory} = useGetCryptoHistoryQuery({coinId, timePeriod})
+  const { data: coinHistory } = useGetCryptoHistoryQuery({
+    coinId,
+    timePeriod,
+  });
 
-    
-  console.log(coinHistory?.data?.history)
-  console.log({timePeriod})
+  console.log(coinHistory?.data?.history);
+  console.log({ timePeriod });
   // setting the details to a constant variable to pull data for that specific coin
   const cryptoDetails = data?.data?.coin;
-  
+
   // fetch crypto details for that specific crypto with its coinId which is uuid
   // do in cryptoApi in service
 
   if (isFetching) return "Loading...";
   // create an array of time
-  const time = ["3h", "24h", "7d", "30d", "1y", "3m", "5y"];
+  const time = ["3h", "24h", "7d", "30d", "3m", "1y", "5y"];
   console.log(cryptoDetails);
   const stats = [
     {
@@ -123,8 +127,11 @@ const CryptoDetails = () => {
     <Col className="coin-detail-container">
       <Col className="coin-heading-container">
         <Title level={2} className="coin-name">
-        <img className="crypto-image-Title" src={data?.data?.coin?.iconUrl} alt="coinIcon" />
-
+          <img
+            className="crypto-image-Title"
+            src={data?.data?.coin?.iconUrl}
+            alt="coinIcon"
+          />
           {/* slug is alternative name for that crypto currency */}
           {cryptoDetails.name}({cryptoDetails.symbol}) Price
         </Title>
@@ -148,7 +155,15 @@ const CryptoDetails = () => {
       {/* render a line chart coinHistory info will come from api call
         dont forget to create endpoint in the services/cryptoAPi.js
       */}
-      <LineChart coinHistory={coinHistory} currentPrice={cryptoDetails.price > 0.1 ? millify(cryptoDetails.price): cryptoDetails.price} coinName={cryptoDetails.name}/>
+      <LineChart
+        coinHistory={coinHistory}
+        currentPrice={
+          cryptoDetails.price > 0.1
+            ? millify(cryptoDetails.price)
+            : cryptoDetails.price
+        }
+        coinName={cryptoDetails.name}
+      />
       {/* statistics */}
       <Col className="stats-container">
         <Col className="coin-value-statistics">
@@ -193,10 +208,10 @@ const CryptoDetails = () => {
       <Col className="coin-desc-link">
         <Row className="coin-desc">
           <Title level={3} className="coin-details-heading">
-              {/* TODO ADD COIN ICON  */}
+            {/* TODO ADD COIN ICON  */}
 
-            <span className="coin-details-span">What is</span>   
-            {cryptoDetails.name}
+            <span className="coin-details-span">What is {cryptoDetails.name}</span>
+            
             {/* using HTMLReactParser, pass in cryptoDetails.description
                     description is a raw HTML:
                     description: "<p>Bitcoin is the firs
@@ -212,8 +227,12 @@ const CryptoDetails = () => {
           {/* under title loop over the cryptoDetails link*/}
           {cryptoDetails?.links.map((link) => (
             <Row className="coin-link" key={link.name}>
-              <Title level={5} className="link-name" >{link.type}</Title>
-              <a href={link.url} target="_blank" rel="norefer">{link.name}</a>
+              <Title level={5} className="link-name">
+                {link.type}
+              </Title>
+              <a href={link.url} target="_blank" rel="norefer">
+                {link.name}
+              </a>
             </Row>
           ))}
         </Col>
