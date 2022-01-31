@@ -50,7 +50,7 @@ const Navbar = () => {
       <div className="logo-container">
         <Avatar src={icon} size={80} />
         <Typography.Title level={2} className="logo">
-          <Link to="/">Cryptomatic</Link>
+          <Link to="/">Cryptzomatic</Link>
           {/* button will be used to switch between the menus on mobile devices 
             setActiveMen(!activeMenu) will toggle the menu 
           */}
