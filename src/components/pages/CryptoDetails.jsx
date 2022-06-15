@@ -29,13 +29,13 @@ const { Option } = Select;
 const CryptoDetails = () => {
   // useParams takes the id in the url and simply allows to be used as a variable
   const { coinId } = useParams();
-  console.log(coinId);
+  // console.log(coinId);
   // at the start of timePeriod set to 7 days
   const [timePeriod, setTimePeriod] = useState("7d");
 
   // make sure to pass coinId into useGetCryptoDetailsQuery(cointId)
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
-  console.log(data?.data?.coin?.iconUrl);
+  // console.log(data?.data?.coin?.iconUrl);
   // rename data to be coinHistory
   // make sure if called timePeriod camel case do the same in the cryptoAPi.js query paramters
   const { data: coinHistory } = useGetCryptoHistoryQuery({
@@ -43,8 +43,8 @@ const CryptoDetails = () => {
     timePeriod,
   });
 
-  console.log(coinHistory?.data?.history);
-  console.log({ timePeriod });
+  // console.log(coinHistory?.data?.history);
+  // console.log({ timePeriod });
   // setting the details to a constant variable to pull data for that specific coin
   const cryptoDetails = data?.data?.coin;
 
@@ -54,7 +54,7 @@ const CryptoDetails = () => {
   if (isFetching) return "Loading...";
   // create an array of time
   const time = ["3h", "24h", "7d", "30d", "3m", "1y", "5y"];
-  console.log(cryptoDetails);
+  // console.log(cryptoDetails);
   const stats = [
     {
       title: "Price to USD",

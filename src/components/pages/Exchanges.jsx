@@ -12,28 +12,14 @@ const Exchanges = () => {
   const [exchange, setExchange] = useState([]);
   const {data} = useGetCryptoDetailsQuery("WcwrkfNI4FUAe")
   const binanceData = data?.data?.coin
-  console.log(binanceData)
+  // console.log(binanceData)
   const { data: exchanges, isFetching } = useGetCryptoExchangesQuery();
   // console.log({ exchanges });
 
-  // useEffect(() => {
-  //   exchanges?.map((exchange, i) => {
-  //     setExchange(exchange);
-  //   });
-  // }, [exchange]);
-  // console.log(exchanges);
 
-  // const exchageStats = [
-  //   {
-  //     index: "",
-  //     image: "",
-  //     name: "",
-  //     tradeVolume: "",
-  //     markets: "",
-  //     change: "",
-  //   },
-  // ];
+ 
   if (isFetching) return "Loading...";
+  if (exchanges === undefined || !data) return <><h1>Loading...</h1></>
   return (
     <>
       {/* 
@@ -75,10 +61,11 @@ const Exchanges = () => {
                       ${millify(exchange.trade_volume_24h_btc)}
                     </Col>
                     <Col span={6}>
-                      {millify(binanceData.marketCap)}
+                    {console.log(binanceData)}
+                      {millify(binanceData?.marketCap || 'undefined')}
                     </Col>
                     <Col span={6}>
-                      {millify(binanceData.change)}
+                      {millify(binanceData.change || 'undefined')}
                     </Col>
                   </Row>
                 }

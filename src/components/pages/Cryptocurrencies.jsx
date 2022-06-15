@@ -22,7 +22,7 @@ const Cryptocurrencies = ({ simplified }) => {
   // with the constant filteredData is going to run at the start
   // const [cryptos, setCryptos] = useState(cryptosList?.data.coins);
   const [cryptos, setCryptos] = useState([]);
-  console.log(cryptos);
+  // console.log(cryptos);
   // when changing searchTerm can add a useEffect
   const [searchTerm, setSearchTerm] = useState("");
   // useEffect is a combination of componentDidMount happening at the start

@@ -27,7 +27,7 @@ const News = ({ simplified }) => {
     count: simplified ? 6 : 12,
   });
   // logging cryptoNews to see if theres data
-  console.log(cryptoNews);
+  // console.log(cryptoNews);
 
   // get data from cryptoApi
   const { data } = useGetCryptosQuery(100);
