@@ -35,5 +35,7 @@
 - npm install moment
     - parse times and dates
 - npm install react-router-dom
-## Errors 1-22-2022
-1. could not see Navbar component when imported. Then realize had to import BrowserRoutter as Router from react-router-dom and wrap App component with Router.
+
+## Errors 
+1. FIXED could not see Navbar component when imported. Then realize had to import BrowserRoutter as Router from react-router-dom and wrap App component with Router.
+2. Fixed pages/Exchanges.jsx was not loading data on first load. So added if conditional to say if exchanges equals undefined or if there isnt any exchanges to show a loading...
